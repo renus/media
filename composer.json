@@ -16,15 +16,15 @@
   },
   "autoload" : {
     "psr-0" : {
-      "Renus\\Media" : ""
+      "Renus\\MediaBundle" : ""
     }
   },
-  "target-dir" : "`",
+  "target-dir" : "Renus/MediaBundle",
   "repositories" : [{
   }],
   "extra" : {
     "branch-alias" : {
-      "dev-master" : "some_version-dev"
+      "dev-master" : "0.1.x-dev"
     }
   }
 }
