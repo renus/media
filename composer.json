@@ -19,7 +19,7 @@
       "Renus\\Media" : ""
     }
   },
-  "target-dir" : "Renus/MediaBundle",
+  "target-dir" : "`",
   "repositories" : [{
   }],
   "extra" : {
