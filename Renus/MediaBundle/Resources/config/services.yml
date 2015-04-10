@@ -1,0 +1,7 @@
+parameters:
+  binary: '/usr/bin/ffmpeg'
+
+services:
+  renus.video:
+          class: Renus\MediaBundle\Service\Video
+          arguments: [ %binary% ]

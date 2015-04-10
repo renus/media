@@ -1,0 +1,3 @@
+renus_media_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RenusMediaBundle:Default:index }
