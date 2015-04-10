@@ -1,0 +1,30 @@
+{
+  "name" : "renus/media",
+  "description" : "Symfony Bundle to handle image and video ",
+  "type" : "symfony-bundle",
+  "authors" : [{
+    "name" : "Renaud Mioque",
+    "email" : "renaud.mioque@gmail.com"
+  }],
+  "keywords" : [
+    "picture video handle bundle"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+  },
+  "autoload" : {
+    "psr-0" : {
+      "Renus\\Media" : ""
+    }
+  },
+  "target-dir" : "Renus/MediaBundle",
+  "repositories" : [{
+  }],
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "some_version-dev"
+    }
+  }
+}
