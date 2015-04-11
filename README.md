@@ -19,7 +19,7 @@ To use RenusMediaBundle you must install and know the path of 'ffmpeg' binary (o
 <pre>
 {
     "require": {
-        "renus/media": "dev-master",
+        "renus/media": "0.*",
     }
 }
 </pre>
@@ -48,10 +48,10 @@ public function registerBundles()
 ```
 
 # Usage
-In Symfony 2, you must use it like a service 
+In Symfony 2 controller, you can use it like a service 
    
-## extract an image from vidéo
-extract the image at 55 seconde
+## extract an image from video
+extract the image at 55 seconds
 
 ```php
 <?php
