@@ -1,7 +1,8 @@
 # RenusMediaBundle
-RenusMediaBundle is a collection of code within a Symfony Bundle to  handle image and video
+RenusMediaBundle is a collection of code within a Symfony Bundle to  handle image and video, you can create an 
+image, or animated gif from a video source
 
-To use MopaBootstrapBundle and twitters Bootstrap 3 in your project add it via composer
+To use RenusMediaBundle in your project add it via composer
 
 
 # Installation
@@ -10,7 +11,13 @@ To use MopaBootstrapBundle and twitters Bootstrap 3 in your project add it via c
 To use RenusMediaBundle you must install and know the path of 'ffmpeg' binary (on Debian):
 
 
-    apt-get install ffmpeg && ffmpeg-php5
+    apt-get install ffmpeg php5-ffmpeg php5-imagick 
+    
+## configuration 
+if you use a non standard Debian installation, you must specify the path to ffmpeg in your parameters file :
+
+    parameters:
+      binary: '/usr/bin/ffmpeg'
     
 ## installation
     
@@ -60,3 +67,14 @@ $service = $this->get('renus.video')->getPicsFromVideo(
             '/path/to/video/vid1.m4v', 55, '/path/to/generate/image/vid1.jpg'
         );
 ```   
+
+## create an animated gif from video
+get an image every 10 seconds to build the animated gif
+
+```php
+<?php
+
+$service = $this->get('renus.video')->generateAnimatedGifFromVideo(
+            '/path/to/video/vid1.m4v', 10, '/path/to/generate/image/vid1.gif'
+        );
+```
