@@ -1,6 +1,6 @@
 # RenusMediaBundle
 RenusMediaBundle is a collection of code within a Symfony Bundle to  handle image and video, you can create an 
-image, or animated gif from a video source
+image or animated gif from a video source or resize and obfuscate an image .
 
 To use RenusMediaBundle in your project add it via composer
 
@@ -39,7 +39,6 @@ composer.phar require renus/media dev-master
 
 3. Register the bundle
 
-Register the bundle:
 
 ```php
 <?php
@@ -63,9 +62,9 @@ extract the image at 55 seconds
 ```php
 <?php
 
-$service = $this->get('renus.video')->getPicsFromVideo(
-            '/path/to/video/vid1.m4v', 55, '/path/to/generate/image/vid1.jpg'
-        );
+$service = $this->container->get('renus.video')->getPicsFromVideo(
+                '/path/to/video/vid1.m4v', 55, '/path/to/generate/image/vid1.jpg'
+            );
 ```   
 
 ## create an animated gif from video
@@ -74,7 +73,18 @@ get an image every 10 seconds to build the animated gif
 ```php
 <?php
 
-$service = $this->get('renus.video')->generateAnimatedGifFromVideo(
-            '/path/to/video/vid1.m4v', 10, '/path/to/generate/image/vid1.gif'
-        );
+$service = $this->container->get('renus.video')->generateAnimatedGifFromVideo(
+                '/path/to/video/vid1.m4v', 10, '/path/to/generate/image/vid1.gif'
+            );
+```
+
+## resize an image
+Choose the destination path and the max size (300px here)
+
+```php
+<?php
+
+$this->container->get('renus.image')
+                ->init('/path/to/image.jpg')
+                ->createThumb('/path/to/resise-thumb.jpg', 300);
 ```

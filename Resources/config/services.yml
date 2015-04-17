@@ -5,3 +5,6 @@ services:
   renus.video:
           class: Renus\MediaBundle\Service\Video
           arguments: [ %binary% ]
+  renus.image:
+          class: Renus\MediaBundle\Service\Image
+          arguments: [ ]
