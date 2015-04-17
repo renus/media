@@ -62,9 +62,9 @@ extract the image at 55 seconds
 ```php
 <?php
 
-$service = $this->container->get('renus.video')->getPicsFromVideo(
-                '/path/to/video/vid1.m4v', 55, '/path/to/generate/image/vid1.jpg'
-            );
+$this->container->get('renus.video')->getPicsFromVideo(
+    '/path/to/video/vid1.m4v', 55, '/path/to/generate/image/vid1.jpg'
+);
 ```   
 
 ## create an animated gif from video
@@ -73,9 +73,9 @@ get an image every 10 seconds to build the animated gif
 ```php
 <?php
 
-$service = $this->container->get('renus.video')->generateAnimatedGifFromVideo(
-                '/path/to/video/vid1.m4v', 10, '/path/to/generate/image/vid1.gif'
-            );
+$this->container->get('renus.video')->generateAnimatedGifFromVideo(
+    '/path/to/video/vid1.m4v', 10, '/path/to/generate/image/vid1.gif'
+);
 ```
 
 ## resize an image
@@ -86,5 +86,5 @@ Choose the destination path and the max size (300px here)
 
 $this->container->get('renus.image')
                 ->init('/path/to/image.jpg')
-                ->createThumb('/path/to/resise-thumb.jpg', 300);
+                ->createThumb('/path/to/resize-thumb.jpg', 300);
 ```
