@@ -42,7 +42,7 @@ class Image
         $this->file   = $file;
 
         if (! ($info = getimagesize($this->file ))) {
-            throw \RuntimeException("source image does not exists");
+            throw new \RuntimeException("source image does not exists : " . $this->file);
         }
 
         $this->width  = $info[0];
@@ -59,6 +59,10 @@ class Image
         return $this;
     }
 
+    /**
+     * @param string $dest
+     * @param int $maxSize
+     */
     public function createThumb($dest = NULL , $maxSize = 100)
     {
         if (empty($this->file)) {
@@ -71,6 +75,63 @@ class Image
         $this->treatOpacity($this->file, $newImage);
         $this->resize($this->file, $newImage, $format);
         $this->save($newImage, $dest);
+    }
+
+    /**
+     * @param $dst destination path
+     * @param $srcX start x source image
+     * @param $srcY start y source image
+     * @param $width width of crop
+     * @param $height height of crop
+     */
+    public function crop($dst, $srcX, $srcY, $width, $height)
+    {
+        $srcImageW = $this->width;
+        $srcImageH = $this->height;
+
+        $tmpImageW = $width;
+        $tmpImageH = $height;
+
+        $dstImageW = $width;
+        $dstImageH = $height;
+
+
+        if ($srcX <= -$tmpImageW || $srcX > $srcImageW) {
+            $srcX = $srcW = $dstX = $dstW = 0;
+        } else if ($srcX <= 0) {
+            $dstX = -$srcX;
+            $srcX = 0;
+            $srcW = $dstW = min($srcImageW, $tmpImageW + $srcX);
+        } else if ($srcX <= $srcImageW) {
+            $dstX = 0;
+            $srcW = $dstW = min($tmpImageW, $srcImageW - $srcX);
+        }
+
+        if ($srcW <= 0 || $srcY <= -$tmpImageH || $srcY > $srcImageH) {
+            $srcY = $srcH = $dstY = $dstH = 0;
+        } else if ($srcY <= 0) {
+            $dstY = -$srcY;
+            $srcY = 0;
+            $srcH = $dstH = min($srcImageH, $tmpImageH + $srcY);
+        } else if ($srcY <= $srcImageH) {
+            $dstY = 0;
+            $srcH = $dstH = min($tmpImageH, $srcImageH - $srcY);
+        }
+
+        $ratio = $tmpImageW / $dstImageW;
+        $dstX /= $ratio;
+        $dstY /= $ratio;
+        $dstW /= $ratio;
+        $dstH /= $ratio;
+
+        $dstImage = $this->createNewImage([
+            "width"  => $dstImageW,
+            "height" => $dstImageH
+        ]);
+
+        $this->treatOpacity($this->file, $dstImage);
+        imagecopyresampled($dstImage, $this->file, $dstX, $dstY, $srcX, $srcY, $dstW, $dstH, $srcW, $srcH);
+        $this->save($dstImage, $dst);
     }
 
 
