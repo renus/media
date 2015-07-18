@@ -98,5 +98,5 @@ and the height of the selection.
 
 $this->container->get('renus.image')
                 ->init('/path/to/image.jpg')
-                ->crop('/path/to/resize-thumb.jpg', 100, 25, 300, 250);
+                ->crop('/path/to/crop-thumb.jpg', 100, 25, 300, 250);
 ```
