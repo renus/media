@@ -89,10 +89,8 @@ $this->container->get('renus.image')
                 ->createThumb('/path/to/resize-thumb.jpg', 300);
 ```
 
-`
-
 ## crop an image
-Choose the destination path , define the start X point and the start Y point, the with
+Choose the destination path , define the start X point and the start Y point, the width
 and the height of the selection.
 
 ```php
