@@ -1,6 +1,6 @@
 # RenusMediaBundle
-RenusMediaBundle is a collection of code within a Symfony Bundle to  handle image and video, you can create an 
-image or animated gif from a video source or resize and obfuscate an image .
+RenusMediaBundle is a collection of code within a Symfony 2 Bundle to  handle image and video, you can create an 
+image or animated gif from a video source or resize, obfuscate and crop an image in Symfony 2.
 
 To use RenusMediaBundle in your project add it via composer
 
@@ -87,4 +87,18 @@ Choose the destination path and the max size (300px here)
 $this->container->get('renus.image')
                 ->init('/path/to/image.jpg')
                 ->createThumb('/path/to/resize-thumb.jpg', 300);
+```
+
+`
+
+## crop an image
+Choose the destination path , define the start X point and the start Y point, the with
+and the height of the selection.
+
+```php
+<?php
+
+$this->container->get('renus.image')
+                ->init('/path/to/image.jpg')
+                ->crop('/path/to/resize-thumb.jpg', 100, 25, 300, 250);
 ```
