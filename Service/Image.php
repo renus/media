@@ -197,6 +197,10 @@ class Image
         ];
     }
 
+    /**
+     * @param $source
+     * @param $image
+     */
     private function treatOpacity($source, $image)
     {
         switch ($this->type) {
@@ -217,5 +221,21 @@ class Image
             default:
                 break;
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->width;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->height;
     }
 }
